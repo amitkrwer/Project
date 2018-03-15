@@ -354,8 +354,11 @@ public class AMSWebServiceImpl {
 				+"where professorId =(select UserId from login where MavEmail='"
 				+ professorEmail
 				+ "') "
-				+ "and "
-				+ "UserId not in (select StudentId from attendance where CourseId = '"
+                                + "and "
+                                + "e.courseId ='"
+                                + courseId
+				+ "' and "
+				+ "UserId in (select StudentId from attendance where CourseId = '"
 				+ courseId + "' and DATE(TimeStamp)='" + todayDate + "')";
 		System.out.println(query);
 		GetManualStudentsInCourseResponse responseobj = new GetManualStudentsInCourseResponse();
