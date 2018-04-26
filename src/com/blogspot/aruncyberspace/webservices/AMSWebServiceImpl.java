@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
+import javax.ws.rs.Consumes;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -109,7 +110,7 @@ public class AMSWebServiceImpl {
 	}
 
 	public String generateRegisterQuery(User user) {
-		String query = "insert into login(FirstName,LastName,MavEmail,Password,DeviceId) values('"
+		String query = "insert into login(FirstName,LastName,MavEmail,Password,DeviceId,userId) values('"
 				+ user.getFirstName()
 				+ "','"
 				+ user.getLastName()
@@ -118,7 +119,10 @@ public class AMSWebServiceImpl {
 				+ "','"
 				+ user.getPassword()
 				+ "','"
-				+ user.getAndroidDeviceId() + "')";
+				+ user.getAndroidDeviceId() 
+				+ "','"
+				+user.getMavEmail()
+				+ "')";
 		System.out.println(query);
 		return query;
 	}
@@ -154,7 +158,6 @@ public class AMSWebServiceImpl {
 		}
 		return response;
 	}
-
 	@Path("/AddTopics")
 	@POST
 	@Produces(MediaType.APPLICATION_XML)
@@ -186,9 +189,43 @@ public class AMSWebServiceImpl {
 		}
 
 		return response;
-
 	}
+        @Path("/AddCourse")
+	@GET
+        @Consumes(MediaType.TEXT_PLAIN)
+	@Produces(MediaType.TEXT_PLAIN)
+	public String AddCourse(@QueryParam("courseId") String courseId,@QueryParam("courseName") String courseName,
+                @QueryParam("courseStartTime") String courseStartTime,@QueryParam("courseEndTime") String courseEndTime) {
+		String response = "";
+		Course course = new Course();
+		try {
+			course = new Course();
+                        course.setCourseId(courseId);
+                        course.setCourseName(courseName);
+                        course.setCourseStartTime(courseStartTime);
+                        course.setCourseEndTime(courseEndTime);
+			String query = "insert into courses(CourseId,CourseName,CourseStartTime,CourseEndTime)"
+					+ "values('"
+					+ course.getCourseId()
+					+ "',"
+					+ "'"
+					+ course.getCourseName()
+					+ "',"
+					+ "'"
+					+ course.getCourseStartTime()
+					+ "'"
+					+ ",'"
+					+ course.getCourseEndTime() + "')";
 
+			System.out.println(query);
+			MySQLHelper helper = new MySQLHelper();
+			helper.executeQuery(query);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+
+		return "ok";
+	}
 	@Path("/Register")
 	@POST
 	@Produces(MediaType.APPLICATION_XML)
@@ -309,17 +346,20 @@ public class AMSWebServiceImpl {
 			for (ManualStudent s : addManualAttendance.getStudents()) {
 				String query;
 				if (s.getTimeStamp() == null) {
-					query = "insert into attendance(StudentId,CourseId,TimeStamp) values('"
+					query = "insert into attendance(StudentId,CourseId,TimeStamp,deviceId) values('"
 							+ s.getStudentId()
 							+ "','"
 							+ s.getCourseNumber()
-							+ "',CURRENT_TIMESTAMP)";
+							+ "',CURRENT_TIMESTAMP"
+                                                        + "," + s.getdeviceId() 
+                                                + ")";
 				} else {
-					query = "insert into attendance(StudentId,CourseId,TimeStamp) values('"
+					query = "insert into attendance(StudentId,CourseId,TimeStamp,deviceId) values('"
 							+ s.getStudentId()
 							+ "','"
 							+ s.getCourseNumber()
-							+ "','" + s.getTimeStamp() + "')";
+							+ "','" + s.getTimeStamp()
+                                                + "','" + s.getdeviceId() + "')";
 				}
 				System.out.println(query);
 				helper.executeQuery(query);

@@ -22,6 +22,16 @@ public class ManualStudent {
 	private String CourseId;
 	@Element(required = false)
 	private String TimeStamp;
+        @Element(required = false)
+	private String deviceId;
+
+    public String getdeviceId() {
+        return deviceId;
+    }
+
+    public void setdeviceId(String DeviceId) {
+        this.deviceId = DeviceId;
+    }
 
 	public String getStudentId() {
 		return StudentId;

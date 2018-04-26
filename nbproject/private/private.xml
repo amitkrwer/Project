@@ -4,8 +4,10 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Srikant/Downloads/AttendanceManagementSystemUsingQRCode-master/Web%20Service%20Project/AMSWebServices/src/com/blogspot/aruncyberspace/webservices/AMSWebServiceImpl.java</file>
-            <file>file:/C:/Users/Srikant/Downloads/AttendanceManagementSystemUsingQRCode-master/Web%20Service%20Project/AMSWebServices/src/com/blogspot/aruncyberspace/webservices/GetTopicsResponse.java</file>
-            <file>file:/C:/Users/Srikant/Downloads/AttendanceManagementSystemUsingQRCode-master/Web%20Service%20Project/AMSWebServices/src/com/blogspot/aruncyberspace/webservices/AddTopicsRequest.java</file>
+            <file>file:/C:/Users/Srikant/Downloads/AttendanceManagementSystemUsingQRCode-master/Web%20Service%20Project/AMSWebServices/src/com/blogspot/aruncyberspace/webservices/DailyReport.java</file>
+            <file>file:/C:/Users/Srikant/Downloads/AttendanceManagementSystemUsingQRCode-master/Web%20Service%20Project/AMSWebServices/src/com/blogspot/aruncyberspace/webservices/ManualStudent.java</file>
+            <file>file:/C:/Users/Srikant/Downloads/AttendanceManagementSystemUsingQRCode-master/Web%20Service%20Project/AMSWebServices/src/com/blogspot/aruncyberspace/webservices/AddManualAttendanceRequest.java</file>
+            <file>file:/C:/Users/Srikant/Downloads/AttendanceManagementSystemUsingQRCode-master/Web%20Service%20Project/AMSWebServices/src/com/blogspot/aruncyberspace/webservices/AddAttenance.java</file>
         </group>
     </open-files>
 </project-private>
