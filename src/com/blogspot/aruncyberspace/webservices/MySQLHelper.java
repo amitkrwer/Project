@@ -19,11 +19,11 @@ public class MySQLHelper {
 
 	public MySQLHelper() {
 		// TODO Auto-generated constructor stub
-                    String url = "jdbc:mysql://sql12.freemysqlhosting.net:3306/sql12234825";
+                    String url = "jdbc:mysql://mysql:3306/attendancemgmtsystem";
 //                String url = "jdbc:mysql://localhost:3306/attendancemgmtsystem";
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
-			conn = DriverManager.getConnection(url, "sql12234825", "4muwTl8vQ3");
+			conn = DriverManager.getConnection(url, "root", "1234");
 			System.out.println("Connection Successful");
 		} catch (Exception e) {
 			e.printStackTrace();
