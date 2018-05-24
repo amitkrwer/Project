@@ -399,7 +399,7 @@ public class AMSWebServiceImpl {
                                 + courseId
 				+ "' and "
 				+ "UserId in (select StudentId from attendance where CourseId = '"
-				+ courseId + "' and DATE(TimeStamp)='" + todayDate + "')";
+				+ courseId + ")";
 		System.out.println(query);
 		GetManualStudentsInCourseResponse responseobj = new GetManualStudentsInCourseResponse();
 		// responseobj.setCourseId(courseId);
